@@ -137,13 +137,15 @@ nav {
 /* Left Column */
 
 .left-column {
-  min-width: 272px;
-  width: 26%;
+  width: 300px;
   display: flex;
   flex-direction: column;
   height: 87.5vh;
   overflow-y: scroll;
   background-color: #f1f1f1;
+  flex-shrink: 0;
+  position: fixed;
+  padding-bottom: 15px;
 }
 .accordion.row {
   width: 100%;
@@ -152,15 +154,16 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-shrink: 0;
 }
 .row .score {
   width: 34px;
   height: 34px;
-  flex-basis: auto;
   text-align: center;
   background-color: #dfecf3;
   font-size: 1.5rem;
   line-height: 2.5rem;
+  flex-shrink: 0;
 }
 .all-companies.row {
   background-color: #f1f1f1;
@@ -169,10 +172,11 @@ nav {
   font-weight: 700;
 }
 .row .name {
-  overflow: hidden;
-  position: absolute;
-  left: 34px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   padding-left: 10px;
+  width: 100%;
 }
 .dropdown-arrow {
   margin-right: 10px;
@@ -191,50 +195,112 @@ nav {
   margin-left: 34px;
 }
 
+/* Vertical Line on the left */
 
 .vertical-line {
-  height: 87.5vnh;
+  height: 87.5vh;
   width: 5px;
   background-color: #f1f1f1;
   flex-shrink: 0;
+  position: fixed;
+  left: 300px;
 }
 
 
 /* Center Column */
 
 .center-column {
-  width: 60%;
+  width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
   min-width: 530px;
+  margin-right: 155px;
+  margin-left: 305px;
 }
 .campaign-info {
   width: 84%;
-  height: 50px;
-  padding: 10px 0;
-  background-color: lightgray;
+  height: 42px;
+  padding: 14px 0;
   margin-bottom: 1px;
+  display: flex;
+  align-items: center;
 }
-.center-filters {
-  width: 84%;
-  height: 25px;
-  background-color: lightgray;
-  margin-bottom: 1px;
+.center.score {
+  background-color: #dfecf3;
+  height: 42px;
+  width: 60px;
+  padding-right: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 33px;
+  flex-shrink: 0;
 }
-.center-content {
-  width: 84%;
-  height: 500px;
-  background-color: lightgray;
+.campaign-names {
+  height: 42px;
+  width: 100%;
+  display: inline-block;
+}
+.text-headers {
+  font-size: 18px;
+  font-weight: 400;
+  color: black;
+  padding-left: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.text-headers span {
+  font-size: 13px;
+  font-weight: 300;
+}
+.campaign-responses {
+  width: 100px;
+  height: 42px;
+  text-align: right;
+  flex-shrink: 0;
 }
 
+
+.center-filters {
+  width: 84%;
+  margin-bottom: 8px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.filter-pill {
+  padding: 3px 10px;
+  border: 1px solid #00b6c8;
+  border-radius: 15px;
+  margin: 0 6px 6px 0;
+  color: #00b6c8;
+}
+.filter-pill:hover {
+  background-color: #00b6c8;
+  color: white;
+}
+
+
+.center-content {
+  width: 84%;
+  height: 1000px;
+  border: 1px solid lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+/* Vertical Line on the right */
 
 .vertical-line-shadow {
   height: 87.5vh;
   width: 5px;
   background-color: #f1f1f1;
   box-shadow: -4px 4px 4px 0 rgba(0, 0, 0, 0.15);
-  position: relative;
+  position: fixed;
+  right: 150px;
   z-index: 31;
   flex-shrink: 0;
 }
@@ -242,43 +308,62 @@ nav {
 /* Right Column */
 
 .right-column {
-  width: 14%;
+  width: 150px;
   height: 87.5vh;
   background-color: #f1f1f1;
-  min-width: 135px;
-  position: relative;
+  position: fixed;
+  right: 0px;
   z-index: 35;
+  flex-shrink: 0;
+  overflow-y: scroll;
 }
-.right-headers {
-  font-size: 0.77rem;
-  color: #c1c1c1;
-  text-transform: uppercase;
-  font-weight: 400;
-  line-height: 20px;
-}
-.right-button {
-  width: 100%;
-  margin-bottom: 1px;
-  display: flex;
-  align-items: center;
-}
-.right-button:hover {
-  background-color: white;
-}
-.right-button img {
-  height: 18px;
-  width: auto;
-  color: #c1c1c1;
-  margin: 0 8px;
-}
+    .right-headers {
+      font-size: 0.77rem;
+      color: #c1c1c1;
+      text-transform: uppercase;
+      font-weight: 400;
+      line-height: 20px;
+    }
+    .right-button {
+      width: 100%;
+      margin-bottom: 1px;
+      display: flex;
+      align-items: center;
+    }
+    .right-button:hover {
+      background-color: white;
+    }
+    .right-button img {
+      height: 18px;
+      width: auto;
+      color: #c1c1c1;
+      margin: 0 8px;
+    }
 
 /* Footer Section */
 
 footer {
   width: 100%;
+  min-width: 700px;
 	height: 15px;
 	background-image: linear-gradient(to right, #730000, #d32928 50%, #f04c32 57%, #f89420 64%, #fed204 70%, #bdd631 78%, #87c440 85%, #009a47 92%, #004100);
+  display: flex;
+  align-items: center;
   position: fixed;
   z-index: 60;
   bottom: 0px;
+  font-size: 11px;
+  font-weight: 700;
+  color: white;
+}
+footer .unhealthy {
+  width: 60%;
+  text-align: right;
+}
+footer .lukewarm {
+  width: 20%;
+  text-align: center;
+}
+footer .healthy {
+  width: 20%;
 }
